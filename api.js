@@ -10,7 +10,6 @@ export async function getData() {
     let data = await res.json();
     let joke = data.joke;
     jokeEl.textContent = `"${joke}"`;
-    console.log(joke);
   } catch (error) {
     console.error(error);
   }

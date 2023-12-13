@@ -4,23 +4,19 @@ export let snake = [
   {x: 5, y: 5}
 ];
 
-export const changeDirection = (e, mobile) => {
+export const changeDirection = (e) => {
   if(e.key === 'ArrowUp' && colMove != 1) {
     rowMove = 0;
     colMove = -1;
-    console.log('up');
   } else if(e.key === 'ArrowDown' && colMove != -1) {
     rowMove = 0;
     colMove = 1;
-    console.log('down');
   } else if(e.key === 'ArrowLeft' && rowMove != 1) {
     rowMove = -1;
     colMove = 0;
-    console.log('left');
   } else if(e.key === 'ArrowRight' && rowMove != -1) {
     rowMove = 1;
     colMove = 0;
-    console.log('right');
   }
 }
 
@@ -53,7 +49,6 @@ export function drawSnake(playBoard, snake){
     } else {
     snakePart.classList.add('snake');
     snakePart.style.gridArea = `${snake[i].x} / ${snake[i].y}`;
-    console.log(snakePart);
     playBoard.appendChild(snakePart);
   }
 }

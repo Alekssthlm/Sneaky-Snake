@@ -98,6 +98,7 @@ getData();
 
 // EVENT LISTENERS
 
+// Click on arrows (mobile) triggers key press to trigger direction change
 mobileUp.addEventListener('click', function(){
   document.dispatchEvent(new KeyboardEvent('keydown', {'key': 'ArrowUp'}))
 })
