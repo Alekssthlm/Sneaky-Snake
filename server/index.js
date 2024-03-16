@@ -18,7 +18,7 @@ app.get('/', async (req, res) =>{
       },
     });
     let data = await response.json()
-    if(fullUrl == "https://sneaky-snake-client.vercel.app/"){
+    if(fullUrl == "https://sneaky-snake-client.vercel.app"){
       res.json(data.joke)
     } else {
       res.json('Not authorized')
