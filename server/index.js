@@ -9,8 +9,8 @@ app.use(express.json())
 
 app.get('/', async (req, res) =>{
   console.log(req.url)
-  const fullUrl = `${req.protocol}://${req.hostname}${req.originalUrl}`;
-  console.log('Full Request URL:', fullUrl);
+  const clientUrl = req.get('referer') || 'Unknown';
+  
   try {
     let response = await fetch("https://icanhazdadjoke.com/", {
       headers: {
@@ -18,10 +18,10 @@ app.get('/', async (req, res) =>{
       },
     });
     let data = await response.json()
-    if(fullUrl == "https://sneaky-snake-client.vercel.app/"){ 
+    if(clientUrl == "https://sneaky-snake-client.vercel.app/"){ 
       res.json(data.joke)
     } else {
-      res.json(`Not authorized ${fullUrl}`)
+      res.json(`Not authorized ${clientUrl}`)
     }
   } catch (err) {
     console.error(err.message)
