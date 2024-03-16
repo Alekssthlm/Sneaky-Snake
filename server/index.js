@@ -21,7 +21,7 @@ app.get('/', async (req, res) =>{
     if(fullUrl == "https://sneaky-snake-client.vercel.app"){
       res.json(data.joke)
     } else {
-      res.json('Not authorized')
+      res.json(`Not authorized ${fullUrl}`)
     }
   } catch (err) {
     console.error(err.message)
