@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="Assets/icon-snake.png" />
+  <!--GOOGLE FONTS-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  <title>Snake</title>
+</head>
+<body>
+  <main class="main-wrap">
+    <header class="header">
+      <h1 class="header__title">SNEAKY SNAKE</h1>
+    </header>
+    <div class="toolbar">
+      <div class="data-wrap">
+      <div class="timer-wrap">
+        <span class="timer__title">TIMER</span>
+        <div class="timer" id="timer">
+          01:00
+        </div>
+      </div>
+      <div class="score-wrap">
+        <span class="current-score__title">SCORE</span>
+        <div class="current-score" id="currentScore">0</div>
+      </div>
+    </div>
+      <div class="button-wrap">
+        <button class="btn-style" id="scoreboardBtn">SCOREBOARD</button>
+        <button class="btn-style" id="resetBtn">RESET GAME</button>
+      </div>
+    </div>
+    <div class="playboard-wrapper">
+      <div class="board_cover" id="boardCover">
+        <form class="form">
+          <div class="form__input-wrap">
+            <p class="joke-header">🐍 SNEAKY JOKE 🐍</p>
+            <p id="jokeEl" class="joke"></p>
+          </div>
+          <button class="start_btn" id="start_btn">START GAME</button>
+        </form>
+        <div class="instructions">
+          <img src="Assets/arrows.png" alt="arrow icons" class="arrows-icon">
+          <p>USE THE ARROWS TO MOVE THE SNAKE</p>
+        </div>
+      </div>
+      <div class="play-board"></div>
+      <div class="score_list" id="score_list">
+        <h3 class="board_title" id="board_title">🏆 TOP 3 PLAYERS 🏆</h3>
+        <ul class="list" id="list">
+          <li class="score_line"><span id="player1Name"></span><span id="player1Score"></span></li>
+          <li class="score_line"><span id="player2Name"></span><span id="player2Score"></span></li>
+          <li class="score_line"><span id="player3Name"></span><span id="player3Score"></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="arrow-container">
+      <div class="mobile-wrapper">
+        <button class="arrow up" id="mobileUp">&#8593;</button>
+        <button class="arrow left" id="mobileLeft">&#8592;</button>
+        <button class="arrow down" id="mobileDown">&#8595;</button>
+        <button class="arrow right" id="mobileRight">&#8594;</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="./script.js" type="module"></script>
+</body>
+</html>
