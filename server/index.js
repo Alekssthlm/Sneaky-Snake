@@ -12,7 +12,7 @@ app.get('/', async (req, res) =>{
   const clientUrl = req.get('referer') || 'Unknown';
   
   try {
-    let response = await fetch("https://icanhazdadjoke.com/", {
+    let response = await fetch(`${process.env.JOKE_API}`, {
       headers: {
         Accept: "application/json",
       },
