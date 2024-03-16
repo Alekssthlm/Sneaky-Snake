@@ -1,13 +1,25 @@
-const express = require('express')
-const app = express()
-const cors = require('cors')
+const express = require('express');
+const app = express();
+const cors = require('cors');
 
-const PORT = process.env.PORT ?? 8000
+const PORT = process.env.PORT ?? 8000;
 
-app.use(cors())
-app.use(express.json())
+const allowedOrigins = ['https://sneaky-snake-client.vercel.app/']; // Replace with your front end snake game's domain
 
-app.get('/', async (req, res) =>{
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
+
+app.use(cors(corsOptions));
+app.use(express.json());
+
+app.get('/', async (req, res) => {
   const clientUrl = req.get('referer') || 'Unknown';
   
   try {
@@ -16,18 +28,15 @@ app.get('/', async (req, res) =>{
         Accept: "application/json",
       },
     });
-    let data = await response.json()
-    if(clientUrl == "https://sneaky-snake-client.vercel.app/"){ 
-      res.json(data.joke)
-    } else {
-      res.json(`Not authorized ${clientUrl}`)
-    }
+    let data = await response.json();
+    
+    res.json(data.joke);
   } catch (err) {
-    console.error(err.message)
+    console.error(err.message);
+    res.status(500).send('Internal Server Error');
   }
-})
+});
 
-
-app.listen(PORT, ()=>{
-  console.log(`Server running on port ${PORT}`)
-})
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
