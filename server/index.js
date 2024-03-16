@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const PORT = process.env.PORT ?? 8000;
 
-const allowedOrigins = ['https://sneaky-snake-client.vercel.app/']; // Replace with your front end snake game's domain
+const allowedOrigins = ['https://sneaky-snake-client.vercel.app']; 
 
 const corsOptions = {
   origin: function (origin, callback) {
