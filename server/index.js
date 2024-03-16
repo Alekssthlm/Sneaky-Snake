@@ -29,8 +29,11 @@ app.get('/', async (req, res) => {
       },
     });
     let data = await response.json();
-    
-    res.json(data.joke);
+    if(clientUrl == "https://sneaky-snake-client.vercel.app/"){ 
+      res.json(data.joke)
+    } else {
+      res.json(`Not authorized`)
+    }
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Internal Server Error');
