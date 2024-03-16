@@ -8,7 +8,6 @@ app.use(cors())
 app.use(express.json())
 
 app.get('/', async (req, res) =>{
-  console.log(req.url)
   const clientUrl = req.get('referer') || 'Unknown';
   
   try {
