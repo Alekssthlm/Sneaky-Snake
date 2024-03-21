@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config() 
 const swaggerUI = require("swagger-ui-express")  //swagger api
 const swaggerJsDoc = require("swagger-jsdoc")    //swagger api
 const PORT = process.env.PORT ?? 8000;
@@ -21,7 +22,7 @@ const options = {          //swagger api
   apis: ["./index.js"]
 }
 
-const allowedOrigins = ['https://sneaky-snake-client.vercel.app', 'http://localhost:8000/'];   // Allowed urls by CORS
+const allowedOrigins = ['https://sneaky-snake-client.vercel.app'];   // Allowed urls by CORS
 const corsOptions = {
   origin: function (origin, callback) {
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
@@ -33,10 +34,10 @@ const corsOptions = {
 };
 
 const app = express();
-const specs = swaggerJsDoc(options) //swagger api
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs))  //swagger api
+const specs = process.env.NODE_ENV === "development" && swaggerJsDoc(options) //swagger api
+if(process.env.NODE_ENV === "development"){app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs))}  //swagger api
 app.use(cors(corsOptions));
-app.use(express.json());
+app.use(express.json()); 
 
 /**
  * @swagger
@@ -83,5 +84,6 @@ app.get('/', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}, ${process.env.NODE_ENV}`);
 });
+ 
