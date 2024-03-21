@@ -90,10 +90,8 @@ body{
 /* TOP SCORE PAGE */
 
 .score_list {
-  width: 95vmin;
-  height: 95vmin;
-  max-width: 50rem;
-  max-height: 50rem;
+  width: 100%;
+  height: 100%;
   background-color: #212837;
   color: white;
   position: absolute;
